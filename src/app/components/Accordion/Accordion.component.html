@@ -1,0 +1,28 @@
+<div class="c-accordion">
+  @for (item of items(); track $index) {
+    <div class="panel" [attr.data-open]="isOpen($index) ? 'true' : undefined">
+      <button
+        type="button"
+        [id]="'accordion-header-' + $index"
+        class="header"
+        [attr.tabindex]="headerTabIndex($index)"
+        [attr.aria-expanded]="isOpen($index)"
+        [attr.aria-controls]="'accordion-body-' + $index"
+        (click)="toggle($index)"
+        (keydown)="onKeyDown($index, $event)"
+      >
+        {{ item.title }}
+        <span class="chevron" aria-hidden="true">▾</span>
+      </button>
+      <div
+        [id]="'accordion-body-' + $index"
+        class="body"
+        role="region"
+        [attr.inert]="isOpen($index) ? null : true"
+        [attr.aria-labelledby]="'accordion-header-' + $index"
+      >
+        <div class="bodyInner">{{ item.content }}</div>
+      </div>
+    </div>
+  }
+</div>

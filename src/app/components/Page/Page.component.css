@@ -1,0 +1,42 @@
+/* l-page — design tokens via custom properties */
+.l-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header {
+  padding: var(--sp-5) var(--sp-6);
+  border-bottom: 1px solid var(--c-border-light);
+}
+.title {
+  margin: 0;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+}
+.subtitle {
+  margin: var(--sp-1) 0 0;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+.main {
+  flex: 1;
+  padding: var(--sp-6);
+  width: 100%;
+}
+.narrow {
+  max-width: var(--max-width-narrow);
+  margin-inline: auto;
+}
+.footer {
+  padding: var(--sp-4) var(--sp-6);
+  border-top: 1px solid var(--c-border-light);
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+  text-align: center;
+}

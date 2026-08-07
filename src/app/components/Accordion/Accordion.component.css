@@ -1,0 +1,56 @@
+/* c-accordion — design tokens via custom properties */
+.c-accordion {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.panel {
+  border-bottom: 1px solid var(--c-border);
+}
+.panel:last-child {
+  border-bottom: none;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  font-family: inherit;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--c-text);
+}
+.header:hover {
+  background-color: var(--c-bg-subtle);
+}
+.chevron {
+  transition: transform var(--transition-base);
+}
+.panel:where([data-open]) .chevron {
+  transform: rotate(180deg);
+}
+.body {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows var(--transition-slow),
+    padding var(--transition-slow);
+}
+.panel:where([data-open]) .body {
+  grid-template-rows: 1fr;
+  padding: 0 var(--sp-4) var(--sp-3);
+}
+.bodyInner {
+  overflow: hidden;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-loose);
+  color: var(--c-text-secondary);
+}

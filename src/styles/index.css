@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Global styles — powered by css-starter
+   ========================================================================== */
+
+@import 'css-starter/index.css';
+
+:root {
+  /* Angular brand overrides — ember red */
+  --c-primary: #e35d5b;
+  --c-primary-hover: #c94f4d;
+  --c-primary-active: #b0403f;
+  --c-primary-subtle: rgba(227, 93, 91, 0.08);
+  --c-focus-ring: rgba(227, 93, 91, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-primary: #f08a88;
+    --c-primary-hover: #e35d5b;
+    --c-primary-active: #c94f4d;
+    --c-primary-subtle: rgba(240, 138, 136, 0.12);
+    --c-focus-ring: rgba(240, 138, 136, 0.4);
+  }
+}

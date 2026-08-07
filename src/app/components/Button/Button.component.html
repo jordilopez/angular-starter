@@ -1,0 +1,6 @@
+<button type="button" class="c-button" [disabled]="disabled()" (click)="onClick()">
+  <ng-content></ng-content>
+  @if (label(); as labelText) {
+    {{ labelText }}
+  }
+</button>

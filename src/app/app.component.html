@@ -1,0 +1,20 @@
+<l-page title="Angular Starter" subtitle="A modern foundation for Angular projects">
+  <div class="hero">
+    <p class="intro">
+      This starter ships <strong>headless components</strong> — no local styles. The shared
+      <strong>css-starter</strong> design system handles the visuals via tokens and base classes.
+    </p>
+
+    <div class="actions">
+      <c-button label="Get started" (click)="handleClick()"></c-button>
+      <c-button label="Learn more" (click)="handleClick()"></c-button>
+    </div>
+
+    <details class="faq">
+      <summary>FAQ</summary>
+      <c-accordion [items]="accordionItems"></c-accordion>
+    </details>
+  </div>
+
+  <div slot="footer">© 2026 Angular Starter — styled by css-starter</div>
+</l-page>

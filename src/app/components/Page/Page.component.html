@@ -1,0 +1,21 @@
+<div class="l-page">
+  @if (title() || subtitle()) {
+    <header class="header">
+      @if (title()) {
+        <h1 class="title">{{ title() }}</h1>
+      }
+      @if (subtitle()) {
+        <p class="subtitle">{{ subtitle() }}</p>
+      }
+      <ng-content select="[slot='header']"></ng-content>
+    </header>
+  }
+
+  <main class="main" [class.centered]="centered()" [class.narrow]="narrow()">
+    <ng-content></ng-content>
+  </main>
+
+  <footer class="footer">
+    <ng-content select="[slot='footer']"></ng-content>
+  </footer>
+</div>
