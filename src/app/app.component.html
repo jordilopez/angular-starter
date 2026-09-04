@@ -10,6 +10,11 @@
       <c-button label="Learn more" (click)="handleClick()"></c-button>
     </div>
 
+    <div class="links">
+      <c-link href="/docs" label="Read the docs"></c-link>
+      <c-link href="/docs" label="Disabled link" [disabled]="true"></c-link>
+    </div>
+
     <details class="faq">
       <summary>FAQ</summary>
       <c-accordion [items]="accordionItems"></c-accordion>

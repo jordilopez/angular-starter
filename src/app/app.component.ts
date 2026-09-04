@@ -1,21 +1,23 @@
 import { Component } from '@angular/core'
 import { PageComponent } from './components/Page/Page.component'
 import { ButtonComponent } from './components/Button/Button.component'
+import { LinkComponent } from './components/Link/Link.component'
 import { AccordionComponent, AccordionItem } from './components/Accordion/Accordion.component'
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [PageComponent, ButtonComponent, AccordionComponent],
+  imports: [PageComponent, ButtonComponent, LinkComponent, AccordionComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 /**
  * Root application component.
  *
- * Composes the `l-page` layout shell with `c-button` and `c-accordion`
- * samples. Components are headless — their styles come from the shared
- * `css-starter` design system via the `.c-button` class.
+ * Composes the `l-page` layout shell with `c-button`, `c-link`, and
+ * `c-accordion` samples. Components are headless — their styles come from
+ * the shared `css-starter` design system via the `.c-button`/`.c-link`
+ * class hooks.
  */
 export class AppComponent {
   readonly accordionItems: AccordionItem[] = [

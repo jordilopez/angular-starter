@@ -71,6 +71,11 @@ src/app/components/
 │   ├── Button.component.html
 │   ├── Button.spec.ts
 │   └── Button.stories.ts
+├── Link/
+│   ├── Link.component.ts
+│   ├── Link.component.html
+│   ├── Link.spec.ts
+│   └── Link.stories.ts
 ├── Accordion/
 │   └── …
 └── Page/

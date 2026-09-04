@@ -39,6 +39,11 @@ src/
         │   ├── Button.component.html
         │   ├── Button.spec.ts           # Unit test
         │   └── Button.stories.ts        # Storybook story
+        ├── Link/
+        │   ├── Link.component.ts        # Headless component + getters
+        │   ├── Link.component.html
+        │   ├── Link.spec.ts             # Unit test
+        │   └── Link.stories.ts          # Storybook story
         ├── Accordion/
         │   ├── Accordion.component.ts   # Types + logic (colocated)
         │   ├── Accordion.component.html

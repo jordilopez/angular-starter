@@ -19,4 +19,10 @@ describe('App', () => {
     fixture.detectChanges()
     expect(fixture.nativeElement.querySelectorAll('button.c-button').length).toBe(2)
   })
+
+  it('renders two c-link elements', () => {
+    const fixture = TestBed.createComponent(AppComponent)
+    fixture.detectChanges()
+    expect(fixture.nativeElement.querySelectorAll('a.c-link').length).toBe(2)
+  })
 })

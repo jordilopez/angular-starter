@@ -1,0 +1,13 @@
+<a
+  class="c-link"
+  [attr.href]="disabled() ? null : href()"
+  [attr.aria-disabled]="disabled() ? 'true' : null"
+  [attr.target]="effectiveTarget"
+  [attr.rel]="effectiveRel"
+  (click)="onClick($event)"
+>
+  <ng-content></ng-content>
+  @if (label(); as labelText) {
+    {{ labelText }}
+  }
+</a>
