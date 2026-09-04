@@ -5,6 +5,13 @@ import { Component, input, output } from '@angular/core'
   standalone: true,
   templateUrl: './Button.component.html',
 })
+/**
+ * Headless button component.
+ *
+ * No local styles. The visual comes from `css-starter`'s native button
+ * styles; `.c-button` is applied as a class hook. The `click` output is
+ * intentionally named for Vue parity and guarded against `disabled`.
+ */
 export class ButtonComponent {
   /** Visible label text inside the button. */
   readonly label = input<string>()

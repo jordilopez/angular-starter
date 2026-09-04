@@ -5,6 +5,14 @@ import { Component, input, output } from '@angular/core'
   standalone: true,
   templateUrl: './Link.component.html',
 })
+/**
+ * Headless link component.
+ *
+ * The default visual comes from `css-starter`'s native anchor styles;
+ * `.c-link` is applied as a class hook. New-tab protection merges
+ * `noopener noreferrer` (case-insensitive `target` matching), and
+ * disabled links swallow activation and propagation.
+ */
 export class LinkComponent {
   /** Destination URL. Required. */
   readonly href = input.required<string>()

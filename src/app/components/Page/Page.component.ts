@@ -6,6 +6,12 @@ import { Component, input } from '@angular/core'
   templateUrl: './Page.component.html',
   styleUrl: './Page.component.css',
 })
+/**
+ * Layout component for page-level structure.
+ *
+ * Renders an optional `<header>` (title / subtitle), a `<main>` content
+ * area with `centered` and `narrow` modes, and an optional `<footer>`.
+ */
 export class PageComponent {
   /** Page-level heading rendered inside `<h1>`. */
   readonly title = input<string>()

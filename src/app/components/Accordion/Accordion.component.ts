@@ -8,6 +8,13 @@ export interface AccordionItem {
   content: string
 }
 
+/**
+ * Accessible accordion component.
+ *
+ * Each panel header is a `<button>` that toggles visibility of its body.
+ * Supports single-panel (default) and multi-panel (`allowMultiple`) modes;
+ * headers implement a roving tabindex with arrow-key navigation.
+ */
 @Component({
   selector: 'c-accordion',
   standalone: true,
@@ -29,6 +36,10 @@ export class AccordionComponent {
     return this.openIndexes().includes(index)
   }
 
+  /**
+   * Opens the panel at `index`, closing the currently open panel in
+   * single-panel mode. Emits the new open-index list via `updateOpen`.
+   */
   toggle(index: number): void {
     if (this.isOpen(index)) {
       this.openIndexes.set(this.openIndexes().filter((i) => i !== index))
@@ -52,6 +63,10 @@ export class AccordionComponent {
     return -1
   }
 
+  /**
+   * Keyboard handler for the panel headers: ArrowUp/ArrowDown move focus
+   * between headers (wrapping), Home/End jump to the first/last header.
+   */
   onKeyDown(index: number, event: KeyboardEvent): void {
     const headers = Array.from(
       this.host.nativeElement.querySelectorAll('.header') as NodeListOf<HTMLElement>,
