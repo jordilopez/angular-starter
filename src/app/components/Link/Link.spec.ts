@@ -109,4 +109,25 @@ describe('Link', () => {
     a.dispatchEvent(event)
     expect(event.defaultPrevented).toBe(true)
   })
+
+  it('does not propagate clicks to ancestors when disabled', () => {
+    const fixture = render({ label: 'Go', disabled: true })
+    let bubbled = 0
+    fixture.nativeElement.addEventListener('click', () => bubbled++)
+    anchor(fixture).dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }))
+    expect(bubbled).toBe(0)
+  })
+
+  it('still propagates clicks to ancestors when enabled', () => {
+    const fixture = render({ label: 'Go', href: '#section' })
+    let bubbled = 0
+    fixture.nativeElement.addEventListener('click', () => bubbled++)
+    anchor(fixture).dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }))
+    expect(bubbled).toBe(1)
+  })
+
+  it('treats target "_BLANK" like "_blank" for rel protection', () => {
+    const a = anchor(render({ label: 'Go', target: '_BLANK' }))
+    expect(a.getAttribute('rel')).toBe('noopener noreferrer')
+  })
 })

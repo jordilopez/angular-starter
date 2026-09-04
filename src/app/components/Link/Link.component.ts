@@ -27,9 +27,10 @@ export class LinkComponent {
   // eslint-disable-next-line @angular-eslint/no-output-native
   readonly click = output<Event>()
 
-  /** True when the link should open in a new tab. */
+  /** True when the link should open in a new tab. Target is matched
+   * case-insensitively so `target="_BLANK"` is protected too. */
   get isNewTab(): boolean {
-    return this.openInNewTab() || this.target() === '_blank'
+    return this.openInNewTab() || (this.target() ?? '').toLowerCase() === '_blank'
   }
 
   /** Resolved `target` — `_blank` when `openInNewTab` is set. */
@@ -46,7 +47,10 @@ export class LinkComponent {
 
   onClick(event: Event): void {
     if (this.disabled()) {
+      // Suppress activation AND propagation so disabled links never
+      // bubble click events to ancestor handlers.
       event.preventDefault()
+      event.stopPropagation()
       return
     }
     this.click.emit(event)
