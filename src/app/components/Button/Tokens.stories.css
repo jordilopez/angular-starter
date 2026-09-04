@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Storybook demo: consumer token overrides for `css-starter`
+   ==========================================================================
+
+   This file is intentionally **unlayered** (no `@layer`): `css-starter`
+   ships all of its styles inside `css-starter.*` cascade layers, and
+   unlayered declarations always beat layered ones in the cascade — no
+   `!important` needed.
+
+   The token rules are scoped to the `.token-override` wrapper (not
+   `:root`), so the purple palette applies only inside the
+   ConsumerOverride story; the global Angular ember-red brand on `:root`
+   stays unchanged. Custom properties inherit, so every token-driven
+   style inside the wrapper picks these up.
+
+   ButtonComponent renders a plain `<button class="c-button">` inside its
+   host, so the swatch classes below target the inner button via a
+   descendant selector. These are **static swatches** (not interactive
+   states) — each one demonstrates a single token value.
+   ========================================================================== */
+
+.token-override {
+  --c-primary: #8b5cf6;
+  --c-primary-hover: #7c3aed;
+  --c-primary-active: #6d28d9;
+  --c-primary-subtle: #ede9fe;
+  --c-focus-ring: #a78bfa;
+}
+
+/* Shared row layout so both stories render comparable swatch rows. */
+.token-swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+/* Static token swatches — the classes live on the <c-button> host, so the
+   inner button is targeted with a descendant selector. */
+
+.token-swatch--primary .c-button {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: #fff;
+}
+
+.token-swatch--hover .c-button {
+  background: var(--c-primary-hover);
+  border-color: var(--c-primary-hover);
+  color: #fff;
+}
+
+.token-swatch--active .c-button {
+  background: var(--c-primary-active);
+  border-color: var(--c-primary-active);
+  color: #fff;
+}
+
+.token-swatch--subtle .c-button {
+  background: var(--c-primary-subtle);
+  border-color: var(--c-primary-subtle);
+  color: var(--c-primary);
+}
+
+.token-swatch--focus .c-button {
+  outline: 2px solid var(--c-focus-ring);
+  outline-offset: 2px;
+}
