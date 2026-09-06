@@ -17,10 +17,19 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:5173',
-    reuseExistingServer: !process.env.CI,
-    timeout: 10_000,
-  },
+  webServer: [
+    {
+      command: 'npm run dev',
+      url: 'http://localhost:5173',
+      reuseExistingServer: !process.env.CI,
+      timeout: 10_000,
+    },
+    {
+      // Serves the Toast stories exercised in tests/toast.spec.ts.
+      command: 'npm run storybook',
+      url: 'http://localhost:6006/index.html',
+      reuseExistingServer: !process.env.CI,
+      timeout: 180_000,
+    },
+  ],
 })
