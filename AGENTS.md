@@ -50,6 +50,12 @@ src/
         │   ├── Accordion.component.css  # Local styles (flat selectors)
         │   ├── Accordion.spec.ts
         │   └── Accordion.stories.ts
+        ├── Toast/
+        │   ├── Toast.component.ts       # Native <dialog>, auto-close timer
+        │   ├── Toast.component.html
+        │   ├── Toast.component.css      # Local styles (flat selectors)
+        │   ├── Toast.spec.ts
+        │   └── Toast.stories.ts
         └── Page/
             ├── Page.component.ts
             ├── Page.component.html
@@ -135,10 +141,10 @@ npm run storybook        # Storybook dev (port 6006, via Angular builder)
 ## css-starter pin
 
 Consumers install `css-starter` from GitHub:
-`"css-starter": "github:jordilopez/css-starter#cb17ba5"`.
+`"css-starter": "github:jordilopez/css-starter#v0.2.1"` (commit `9b427cf`).
 
-**Note:** currently pinned to the commit `cb17ba5` (dark-mode refactor to
-`@media prefers-color-scheme`). The published `v0.1.0` tag ships the older
-`data-theme` mode, which never activates. Switch to `#v0.2.0` once that tag
-is published. Brand overrides live in `src/styles/index.css` (ember red
+**Note:** `v0.2.1` ships the `@media prefers-color-scheme` dark mode (no
+`data-theme` attribute) plus the semantic state colour tokens `--c-info`,
+`--c-success`, `--c-warning`, `--c-error` (consumed by the `Toast` variant
+icons). Brand overrides live in `src/styles/index.css` (ember red
 `#e35d5b`).

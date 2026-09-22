@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Toast — co-located component styles (emulated encapsulation, flat selectors)
+   ========================================================================== */
+
+/* Local deviation from the headless convention: these styles live with
+   the component instead of css-starter. They consume css-starter tokens
+   so light/dark follows the user's OS preference automatically. Migrate
+   into `css-starter/src/styles/toast/` when the design system ships
+   toast support. The `c-toast` class stays on the <dialog> as the
+   design-system hook. */
+
+/* Accent used by the variant icon; falls back to secondary text colour
+   when no variant is set. */
+.c-toast {
+  --toast-accent: var(--c-text-secondary);
+}
+.c-toast[data-variant='info'] {
+  --toast-accent: var(--c-info);
+}
+.c-toast[data-variant='success'] {
+  --toast-accent: var(--c-success);
+}
+.c-toast[data-variant='error'] {
+  --toast-accent: var(--c-error);
+}
+.c-toast[data-variant='warning'] {
+  --toast-accent: var(--c-warning);
+}
+
+.c-toast {
+  /* Anchor bottom-right; `showModal()` promotes to the top layer, so
+     fixed positioning escapes the centered dialog default. `inset: auto`
+     clears the UA stylesheet's top/left: 0, which would otherwise pin
+     the toast to the top-left corner. */
+  inset: auto;
+  position: fixed;
+  right: var(--sp-5);
+  bottom: var(--sp-5);
+  margin: 0;
+
+  /* Token-driven surface */
+  padding: var(--sp-3) var(--sp-4);
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+
+  /* Typography */
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
+
+  /* Viewport-constrained minimum: never wider than the viewport minus
+     its own side padding, even on very narrow screens. */
+  min-width: min(240px, calc(100vw - 2 * var(--sp-4)));
+  max-width: min(360px, calc(100vw - var(--sp-8)));
+}
+
+/* Content row: message + close button spread apart. Scoped to [open] so
+   we don't override the UA stylesheet's `[dialog]:not([open]) {
+   display: none }` — an unscoped display would keep the closed dialog
+   permanently visible. */
+.c-toast[open] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.c-toast .content {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.c-toast .content > svg {
+  /* Inline SVGs have no intrinsic size — scale with the surrounding font. */
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  color: var(--toast-accent);
+}
+
+/* Dim the page without blocking it visually — keep toasts readable while
+   content stays visible behind. */
+.c-toast::backdrop {
+  background-color: transparent;
+}
+
+.c-toast .close {
+  /* Don't let long message text squeeze the close button into oblivion */
+  flex-shrink: 0;
+}
+
+.c-toast .close button {
+  /* Compact square hit area for the close icon */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: var(--sp-1);
+  border: none;
+  background-color: transparent;
+  color: var(--c-text-secondary);
+}
+
+.c-toast .close button:hover {
+  background-color: var(--c-bg-muted);
+  color: var(--c-text);
+}
+
+.c-toast .close button svg {
+  width: 1em;
+  height: 1em;
+}
