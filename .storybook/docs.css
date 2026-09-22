@@ -13,7 +13,7 @@
     color: var(--c-text);
   }
 
-  body .sbdocs :is(h1, h2, h3, h4, h5, h6, p, li, ul, ol, blockquote, td, th, caption, figcaption) {
+  body .sbdocs :is(h1, h2, h3, h4, h5, h6, p, li, ul, ol, blockquote, caption, figcaption) {
     color: var(--c-text);
   }
 
@@ -42,5 +42,27 @@
 
   body .sbdocs table:not(.sb-argstableBlock) tr:nth-of-type(2n) {
     background-color: var(--c-bg-subtle);
+  }
+
+  /*
+   * Storybook's ArgsTable uses emotion-generated classes with !important
+   * on light-theme colors. Override them in dark mode so the table matches
+   * the design system.
+   */
+  body .docblock-argstable,
+  body .docblock-argstable td,
+  body .docblock-argstable th {
+    background-color: var(--c-bg) !important;
+    color: var(--c-text) !important;
+  }
+
+  body .docblock-argstable tr:not(:first-child) {
+    border-top-color: var(--c-border) !important;
+  }
+
+  body .docblock-argstable {
+    box-shadow:
+      rgba(0, 0, 0, 0.3) 0 1px 3px 1px,
+      rgba(255, 255, 255, 0.065) 0 0 0 1px !important;
   }
 }
