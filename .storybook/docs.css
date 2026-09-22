@@ -1,1 +1,46 @@
-/* Storybook docs customizations */
+/*
+ * Storybook's built-in docs theme hardcodes a light background on docs
+ * pages while the design system follows the user's OS color preference.
+ */
+
+@media (prefers-color-scheme: dark) {
+  body .sbdocs,
+  body .sbdocs-preview {
+    background-color: var(--c-bg);
+  }
+
+  body .sbdocs {
+    color: var(--c-text);
+  }
+
+  body .sbdocs :is(h1, h2, h3, h4, h5, h6, p, li, ul, ol, blockquote, td, th, caption, figcaption) {
+    color: var(--c-text);
+  }
+
+  body .sbdocs :is(h2, h3, h4, h5, h6) {
+    color: var(--c-text-secondary);
+  }
+
+  body .sbdocs a {
+    color: var(--c-primary);
+  }
+
+  /* Keep inline code distinct from striped markdown table rows. */
+  body .sbdocs :is(code, pre) {
+    color: var(--c-text);
+    background-color: var(--c-bg-muted);
+  }
+
+  /*
+   * Override Storybook's generated markdown-table rules while preserving
+   * the built-in styling of Storybook's ArgsTable.
+   */
+  body .sbdocs table:not(.sb-argstableBlock, .sb-argstableBlock *) :is(td, th) {
+    color: var(--c-text);
+    border-color: var(--c-border);
+  }
+
+  body .sbdocs table:not(.sb-argstableBlock) tr:nth-of-type(2n) {
+    background-color: var(--c-bg-subtle);
+  }
+}
