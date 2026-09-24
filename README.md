@@ -182,6 +182,9 @@ All three must pass before the commit goes through.
 
 ## Storybook
 
+The deployed Storybook is available at
+[https://jordilopez.github.io/angular-starter/](https://jordilopez.github.io/angular-starter/).
+
 ```bash
 npm run storybook
 ```
